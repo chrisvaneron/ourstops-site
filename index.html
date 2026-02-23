@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OurStops — Places Made Personal. Moments Made Yours.</title>
+  <meta name="description" content="Create unforgettable location-based surprise experiences for the people you love. Plan stops, hide surprises, and watch them explore.">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coral: #E8533A;
+      --amber: #F5A623;
+      --parchment: #FDF6EE;
+      --espresso: #1A1208;
+      --coral-light: #f4a99b;
+      --parchment-dark: #f5ead8;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--parchment);
+      color: var(--espresso);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -20%;
+      width: 140%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(232, 83, 58, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(26, 18, 8, 0.12);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--coral);
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      color: rgba(26, 18, 8, 0.7);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Store Buttons */
+    .store-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-width: 200px;
+      justify-content: center;
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26, 18, 8, 0.15);
+    }
+
+    .store-btn:active {
+      transform: translateY(0);
+    }
+
+    .store-btn--apple {
+      background: var(--espresso);
+      color: #fff;
+    }
+
+    .store-btn--google {
+      background: #fff;
+      color: var(--espresso);
+      border: 2px solid rgba(26, 18, 8, 0.12);
+    }
+
+    .store-btn svg {
+      flex-shrink: 0;
+    }
+
+    .store-btn .store-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+    }
+
+    .store-btn .store-label small {
+      font-size: 0.65rem;
+      font-weight: 400;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .store-btn .store-label span {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    /* Features */
+    .features {
+      padding: 5rem 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(26, 18, 8, 0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: rgba(26, 18, 8, 0.65);
+      line-height: 1.5;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .cta h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid rgba(26, 18, 8, 0.08);
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: rgba(26, 18, 8, 0.5);
+    }
+
+    footer a {
+      color: var(--coral);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .store-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .store-btn {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img src="icon.png" alt="OurStops app icon" class="logo">
+    <h1>Places made personal.<br><span class="highlight">Moments made yours.</span></h1>
+    <p>Create unforgettable location-based surprise experiences for the people you love. Plan the stops, hide the surprises, and watch the magic unfold.</p>
+    <div class="store-buttons">
+      <a href="#" class="store-btn store-btn--apple" aria-label="Download on the App Store">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <span class="store-label">
+          <small>Download on the</small>
+          <span>App Store</span>
+        </span>
+      </a>
+      <a href="#" class="store-btn store-btn--google" aria-label="Get it on Google Play">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3.61 1.814L13.793 12 3.61 22.186a1.2 1.2 0 0 1-.41-.915V2.73c0-.347.149-.66.41-.915z" fill="#4285F4"/>
+          <path d="M17.123 8.67L5.24.923C4.68.6 4.06.58 3.61 1.814l10.183 10.183 3.33-3.327z" fill="#EA4335"/>
+          <path d="M3.61 22.186c.45 1.234 1.07 1.214 1.63.891l11.883-7.747-3.33-3.327L3.61 22.186z" fill="#34A853"/>
+          <path d="M20.59 10.476l-3.467-2.006-3.33 3.327 3.33 3.33 3.467-2.009c.93-.54.93-2.1 0-2.642z" fill="#FBBC04"/>
+        </svg>
+        <span class="store-label">
+          <small>Get it on</small>
+          <span>Google Play</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>How It Works</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F4CD;</div>
+        <h3>Plan Your Stops</h3>
+        <p>Pick meaningful locations and attach photos, notes, or surprises to each one. Design a journey only you could create.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F381;</div>
+        <h3>Share the Experience</h3>
+        <p>Send an invite code to your person. They won't know what's waiting — just where to go next.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F30D;</div>
+        <h3>Watch Them Explore</h3>
+        <p>Each stop unlocks only when they arrive. The surprise unfolds in real life, one location at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to create something unforgettable?</h2>
+    <div class="store-buttons">
+      <a href="#" class="store-btn store-btn--apple" aria-label="Download on the App Store">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <span class="store-label">
+          <small>Download on the</small>
+          <span>App Store</span>
+        </span>
+      </a>
+      <a href="#" class="store-btn store-btn--google" aria-label="Get it on Google Play">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3.61 1.814L13.793 12 3.61 22.186a1.2 1.2 0 0 1-.41-.915V2.73c0-.347.149-.66.41-.915z" fill="#4285F4"/>
+          <path d="M17.123 8.67L5.24.923C4.68.6 4.06.58 3.61 1.814l10.183 10.183 3.33-3.327z" fill="#EA4335"/>
+          <path d="M3.61 22.186c.45 1.234 1.07 1.214 1.63.891l11.883-7.747-3.33-3.327L3.61 22.186z" fill="#34A853"/>
+          <path d="M20.59 10.476l-3.467-2.006-3.33 3.327 3.33 3.33 3.467-2.009c.93-.54.93-2.1 0-2.642z" fill="#FBBC04"/>
+        </svg>
+        <span class="store-label">
+          <small>Get it on</small>
+          <span>Google Play</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="terms_of_service.html">Terms of Service</a>
+    </div>
+    <p>&copy; 2026 OurStops. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
