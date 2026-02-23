@@ -62,7 +62,22 @@
       height: 120px;
       border-radius: 28px;
       box-shadow: 0 8px 32px rgba(26, 18, 8, 0.12);
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .wordmark {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      letter-spacing: -1px;
+      color: var(--espresso);
+      margin-bottom: 0.75rem;
+    }
+
+    .wordmark-gradient {
+      background: linear-gradient(to right, var(--coral), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero h1 {
@@ -257,6 +272,7 @@
 
   <section class="hero">
     <img src="icon.png" alt="OurStops app icon" class="logo">
+    <div class="wordmark">Our<span class="wordmark-gradient">Stops</span></div>
     <h1>Places made personal.<br><span class="highlight">Moments made yours.</span></h1>
     <p>Create unforgettable location-based surprise experiences for the people you love. Plan the stops, hide the surprises, and watch the magic unfold.</p>
     <div class="store-buttons">
@@ -334,8 +350,8 @@
 
   <footer>
     <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+      <a href="privacy">Privacy Policy</a>
+      <a href="terms">Terms of Service</a>
     </div>
     <p>&copy; 2026 OurStops. All rights reserved.</p>
   </footer>
